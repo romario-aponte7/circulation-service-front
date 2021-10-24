@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -8,12 +9,34 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class MainComponent implements OnInit {
 
+  navLinks: any[] = [];
+  activeLinkIndex = -1;
+
+
+
   constructor(
-    private carService: CarService
-  ) { }
+    private router: Router
+  ) {
+    this.navLinks = [
+      {
+        label: 'Información',
+        link: './info',
+        index: 0,
+        visible: true
+      },
+      {
+        label: 'Consulta',
+        link: './search',
+        index: 1,
+        visible: true
+      }
+    ];
+  }
 
   ngOnInit(): void {
-    
+    this.router.events.subscribe((res) => {
+      this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
+    });
   }
 
 }

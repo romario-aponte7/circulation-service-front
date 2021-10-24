@@ -1,13 +1,9 @@
-<div class="container">
-
-    <div class="botton">
+<nav mat-tab-nav-bar color="accent">
+    <div *ngFor="let link of navLinks">
+      <a *ngIf="link.visible" mat-tab-link  [routerLink]="link.link" routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">
+      {{link.label}}
+  </a>
     </div>
-    <div class="center">
-        <div class="side">
-        </div>
-        <div class="sided">
-        </div>
-    </div>
-    <div class="botton">
-    </div>
-</div>
+  </nav>
+  <router-outlet></router-outlet>

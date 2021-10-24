@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewCarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+
+  ) {
+    console.log('carr')
+   }
 
   ngOnInit(): void {
   }
