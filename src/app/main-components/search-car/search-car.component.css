@@ -7,5 +7,25 @@
 }
 .form{
     width: 50%;
-    height: 60%;
+    height: 50%;
+    margin-bottom: 20%;
+}
+.tittle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 30%;
+}
+.line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20%;
+}
+.buttons{
+    /* padding-right: 60px; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 20%;
 }

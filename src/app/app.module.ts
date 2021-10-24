@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './main-components/app-material/app-material.module';
 import { InfoCarComponent } from './main-components/info-car/info-car.component';
 import { SearchCarComponent } from './main-components/search-car/search-car.component';
+import { DialogService } from 'primeng/dynamicdialog';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,13 @@ import { SearchCarComponent } from './main-components/search-car/search-car.comp
     AppRoutes,
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
+    
   ],
-  providers: [],
+  providers: [
+    DialogService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

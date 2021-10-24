@@ -1,5 +1,52 @@
 <div class="cont">
     <div class="form">
-        k
+        <div class="register-form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="tittle">
+                    <h2>Consula de circulación</h2>
+                </div>
+
+                <div class="line">
+                    <div class="form-group">
+                        <label>Placa Vehicular</label>
+                        <input type="text" formControlName="licensePlate" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.licensePlate.errors }" />
+                        <div *ngIf="submitted && f.licensePlate.errors" class="invalid-feedback">
+                            <div *ngIf="f.licensePlate.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.licensePlate.errors.minlength">
+                                N° Placa mínimo 7 caractéres
+                            </div>
+                            <div *ngIf="f.licensePlate.errors.maxlength">
+                                N° Placa máximo 7 caractéres
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="line">
+                    <mat-form-field style="size: 100%;">
+                        <input matInput readonly [matDatepicker]="picker" placeholder="Fecha" formControlName="date"
+                            (dateChange)="date($event)" style="size: 100%;">
+                        <mat-datepicker-toggle matSuffix [for]="picker" style="size: 100%;"></mat-datepicker-toggle>
+                        <mat-datepicker #picker style="size: 100%;"></mat-datepicker>
+                    </mat-form-field>
+
+
+                    <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+                        <div *ngIf="f.date.errors.required">Fecha de consulta es requerida</div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn btn-info rounded-pill" type="button" (click)="AddNew()">Agregar</button>
+                    <button class="btn btn-success rounded-pill" type="submit" (click)="onSubmit()"
+                        color="primary">Consultar</button>
+                </div>
+                <div class="line">
+                </div>
+            </form>
+
+        </div>
     </div>
 </div>

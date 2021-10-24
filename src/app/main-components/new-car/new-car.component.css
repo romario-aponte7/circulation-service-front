@@ -1,0 +1,15 @@
+.cont{
+    background-color: rgb(255, 248, 220);
+}
+.line{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttons{
+    /* padding-right: 60px; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 20%;
+}

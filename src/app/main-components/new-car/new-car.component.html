@@ -1,1 +1,98 @@
-<p>new-car works!</p>
+<div class="cont">
+    <div class="form">
+        <div class="register-form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="line">
+                    <div class="form-group">
+                        <label>Placa Vehicular</label>
+                        <input type="text" formControlName="licensePlate" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.licensePlate.errors }" />
+                        <div *ngIf="submitted && f.licensePlate.errors" class="invalid-feedback">
+                            <div *ngIf="f.licensePlate.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.licensePlate.errors.minlength">
+                                N° Placa mínimo 7 caractéres
+                            </div>
+                            <div *ngIf="f.licensePlate.errors.maxlength">
+                                N° Placa máximo 7 caractéres
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Fecha</label>
+                        <input type="text" formControlName="enrollmentDate" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.enrollmentDate.errors }" />
+                        <div *ngIf="submitted && f.enrollmentDate.errors" class="invalid-feedback">
+                            <div *ngIf="f.enrollmentDate.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <input type="text" formControlName="brand" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.brand.errors }" />
+                        <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
+                            <div *ngIf="f.brand.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <input type="text" formControlName="type" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.type.errors }" />
+                        <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
+                            <div *ngIf="f.type.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="form-group">
+                        <label>Color</label>
+                        <input type="text" formControlName="color" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.color.errors }" />
+                        <div *ngIf="submitted && f.color.errors" class="invalid-feedback">
+                            <div *ngIf="f.color.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>País</label>
+                        <input type="text" formControlName="country" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.country.errors }" />
+                        <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                            <div *ngIf="f.country.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="form-group">
+                        <label>Motor</label>
+                        <input type="text" formControlName="motor" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.motor.errors }" />
+                        <div *ngIf="submitted && f.motor.errors" class="invalid-feedback">
+                            <div *ngIf="f.motor.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Chasis</label>
+                        <input type="text" formControlName="chassis" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.chassis.errors }" />
+                        <div *ngIf="submitted && f.chassis.errors" class="invalid-feedback">
+                            <div *ngIf="f.chassis.errors.required">N° Placa es requerida</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn btn-success rounded-pill" type="submit" (click)="onSubmit()"
+                        color="primary">Agregar</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
