@@ -11,6 +11,9 @@ import { InfoCarComponent } from './main-components/info-car/info-car.component'
 import { SearchCarComponent } from './main-components/search-car/search-car.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { HttpClientModule } from '@angular/common/http';
+import { ConfigCarComponent } from './main-components/config-car/config-car.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -18,18 +21,20 @@ import { HttpClientModule } from '@angular/common/http';
     MainComponent,
     NewCarComponent,
     InfoCarComponent,
-    SearchCarComponent
+    SearchCarComponent,
+    ConfigCarComponent
   ],
   imports: [
     AppRoutes,
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
-    
+    HttpClientModule,
+    ToastModule    
   ],
   providers: [
-    DialogService
+    DialogService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

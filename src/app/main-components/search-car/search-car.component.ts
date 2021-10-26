@@ -1,9 +1,11 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+import Swal from 'sweetalert2';
 import { NewCarComponent } from '../new-car/new-car.component';
 
 @Component({
@@ -16,13 +18,16 @@ export class SearchCarComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   public ref: any;
-
+  cars: Car[] = [];
   constructor(
     private formBuilder: FormBuilder,
     public dialogService: DialogService,
-    public carService: CarService) { }
+    public carService: CarService,
+    private messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
+    this.loadCard();
     this.form = this.formBuilder.group(
       {
         licensePlate: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
@@ -42,10 +47,27 @@ export class SearchCarComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.carService.getInfoCar(this.form.value.licensePlate.toUpperCase(), this.form.value.date).subscribe((res: any) => {
+    const format = 'yyyy-MM-dd hh:mm:ss';
+    const locale = 'en-US';
+    const date = formatDate(this.form.value.date, format, locale)
+    const car = this.cars.find(car => car.licensePlate === this.form.value.licensePlate);
+    if (!car) {
+      this.showError('No se encontro el vehículo');
+      return;
+    }
+    this.carService.getInfoCar(car.carId || '', date).subscribe((res: any) => {
+
+      Swal.fire({
+        text: 'EL vehiculo ' + res.licensePlate + ' ' + res.message,
+        icon: 'success'
+      })
 
     }, (error) => {
-
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Algo salió mal!',
+      })
     });
 
 
@@ -75,9 +97,21 @@ export class SearchCarComponent implements OnInit {
       // data: { user: this.currentPerson.user, isAdmin: false },
     });
     this.ref.onClose.subscribe((res: boolean) => {
-      // this.dataProvider.isDisabledScreen = false;
+      this.loadCard();
     });
   }
+  loadCard() {
+    this.carService.loadCars().subscribe((res: any) => {
+      this.cars = res;
+    }, (error) => {
 
+    });
+  }
+  showError(detail: string) {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: detail });
+  }
+  showSuccess(detail: string) {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: detail });
+  }
 
 }

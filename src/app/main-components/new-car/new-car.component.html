@@ -1,4 +1,4 @@
-<div class="cont">
+<div class="cont" style="z-index: -999;">
     <div class="form">
         <div class="register-form">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -19,12 +19,11 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label>Fecha</label>
-                        <input type="text" formControlName="enrollmentDate" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && f.enrollmentDate.errors }" />
+                    <div class="form-group" style="z-index: 999;">
+                        <input matInput type="date" placeholder="Fecha Matrícula" formControlName="enrollmentDate"
+                            style="size: 100%;">
                         <div *ngIf="submitted && f.enrollmentDate.errors" class="invalid-feedback">
-                            <div *ngIf="f.enrollmentDate.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.enrollmentDate.errors.required">Fecha de matrícula es requerida</div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +34,7 @@
                         <input type="text" formControlName="brand" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.brand.errors }" />
                         <div *ngIf="submitted && f.brand.errors" class="invalid-feedback">
-                            <div *ngIf="f.brand.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.brand.errors.required">Marca es requerida</div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -43,7 +42,7 @@
                         <input type="text" formControlName="type" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.type.errors }" />
                         <div *ngIf="submitted && f.type.errors" class="invalid-feedback">
-                            <div *ngIf="f.type.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.type.errors.required">Tipo es requerido</div>
                         </div>
                     </div>
                 </div>
@@ -54,7 +53,7 @@
                         <input type="text" formControlName="color" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.color.errors }" />
                         <div *ngIf="submitted && f.color.errors" class="invalid-feedback">
-                            <div *ngIf="f.color.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.color.errors.required">Color es requerido</div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -62,7 +61,7 @@
                         <input type="text" formControlName="country" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.country.errors }" />
                         <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
-                            <div *ngIf="f.country.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.country.errors.required">País de origen es requerido</div>
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,7 @@
                         <input type="text" formControlName="motor" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.motor.errors }" />
                         <div *ngIf="submitted && f.motor.errors" class="invalid-feedback">
-                            <div *ngIf="f.motor.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.motor.errors.required">N° Motor es requerido</div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -81,7 +80,7 @@
                         <input type="text" formControlName="chassis" class="form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.chassis.errors }" />
                         <div *ngIf="submitted && f.chassis.errors" class="invalid-feedback">
-                            <div *ngIf="f.chassis.errors.required">N° Placa es requerida</div>
+                            <div *ngIf="f.chassis.errors.required">N° Chasis es requerido</div>
                         </div>
                     </div>
                 </div>
@@ -96,3 +95,4 @@
         </div>
     </div>
 </div>
+<p-toast position="bottom-left" key="tst"></p-toast>

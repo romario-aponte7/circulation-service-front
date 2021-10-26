@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { ConfigCarComponent } from "./main-components/config-car/config-car.component";
 import { InfoCarComponent } from "./main-components/info-car/info-car.component";
 import { MainComponent } from "./main-components/main/main.component";
-import { NewCarComponent } from "./main-components/new-car/new-car.component";
 import { SearchCarComponent } from "./main-components/search-car/search-car.component";
 
 const routes: Routes = [
@@ -12,7 +12,8 @@ const routes: Routes = [
     children: [
 
       { path: 'info', component: InfoCarComponent },
-      { path: 'search', component: SearchCarComponent }]
+      { path: 'search', component: SearchCarComponent },
+      { path: 'config', component: ConfigCarComponent }]
   },
 
 ];

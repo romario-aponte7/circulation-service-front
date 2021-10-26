@@ -7,20 +7,16 @@
                 </div>
 
                 <div class="line">
-                    <div class="form-group">
-                        <label>Placa Vehicular</label>
-                        <input type="text" formControlName="licensePlate" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && f.licensePlate.errors }" />
-                        <div *ngIf="submitted && f.licensePlate.errors" class="invalid-feedback">
-                            <div *ngIf="f.licensePlate.errors.required">N° Placa es requerida</div>
-                            <div *ngIf="f.licensePlate.errors.minlength">
-                                N° Placa mínimo 7 caractéres
-                            </div>
-                            <div *ngIf="f.licensePlate.errors.maxlength">
-                                N° Placa máximo 7 caractéres
-                            </div>
-                        </div>
-                    </div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>N° de palca</mat-label>
+                        <input type="text" placeholder="Seleccione" aria-label="Placa" matInput formControlName="licensePlate"
+                            [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of cars" [value]="option.licensePlate">
+                                {{option.licensePlate}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
                 </div>
                 <br>
                 <div class="line">
@@ -50,3 +46,5 @@
         </div>
     </div>
 </div>
+
+<p-toast [style]="{marginTop: '20px'}" [baseZIndex]="10000"></p-toast>

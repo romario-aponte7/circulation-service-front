@@ -29,6 +29,12 @@ export class MainComponent implements OnInit {
         link: './search',
         index: 1,
         visible: true
+      },
+      {
+        label: 'Configuracion de circulación',
+        link: './config',
+        index: 2,
+        visible: true
       }
     ];
   }

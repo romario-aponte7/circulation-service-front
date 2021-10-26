@@ -1,0 +1,71 @@
+<div class="cont">
+    <div class="form">
+        <div class="register-form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="line">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-select formControlName="lunes" class="form-control" placeholder="Lunes" multiple>
+                                <mat-option *ngFor="let day of dayNumbers" [value]="day.value">
+                                    {{day.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-select formControlName="martes" class="form-control" placeholder="Martes" multiple>
+                                <mat-option *ngFor="let day of dayNumbers" [value]="day.value">
+                                    {{day.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-select formControlName="miercoles" class="form-control" placeholder="Miércoles" multiple>
+                                <mat-option *ngFor="let day of dayNumbers" [value]="day.value">
+                                    {{day.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-select formControlName="jueves" class="form-control" placeholder="Jueves" multiple>
+                                <mat-option *ngFor="let day of dayNumbers" [value]="day.value">
+                                    {{day.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="form-group">
+                        <mat-form-field>
+                            <mat-select formControlName="viernes" class="form-control" placeholder="Viernes" multiple>
+                                <mat-option *ngFor="let day of dayNumbers" [value]="day.value">
+                                    {{day.viewValue}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="btn btn-success rounded-pill" type="submit" (click)="onSubmit()"
+                        color="primary">GUARDAR</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<p-toast position="bottom-left" key="tst"></p-toast>
